@@ -33,7 +33,7 @@
             />
 
         <TextBlock Grid.Column="1" Grid.Row="1" FontSize="25" Foreground="#1666BA" Background="#DEECFB" Padding="10" VerticalAlignment="Center" HorizontalAlignment="Center">Zaloguj się jako</TextBlock>
-        <Button Grid.Row="2" Grid.Column="1" FontSize="25" Margin="10" Background="#368CE7" Foreground="#DEECFB" Content="Administrator"/>
+        <Button Grid.Row="2" Grid.Column="1" FontSize="25" Margin="10" Background="#368CE7" Foreground="#DEECFB" Content="Administrator" Click="Button_Click_1"/>
         <Button Grid.Row="3" Grid.Column="1" FontSize="25" Margin="10" Background="#368CE7" Foreground="#DEECFB" Content="Użytkownik" Click="Button_Click"/>
         <Line VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="4" Grid.Column="1"
             X1="0" Y1="0"

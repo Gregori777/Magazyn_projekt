@@ -46,7 +46,7 @@
                     </Button>
                 </Border>
                 <Border BorderBrush="#DEECFB" BorderThickness="1" CornerRadius="50" Margin="20" Width="75" Height="75" Background="#DEECFB">
-                    <Button Foreground="#1666BA" FontSize="20" Content="+">
+                    <Button Foreground="#1666BA" FontSize="20" Content="">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Border Background="#DEECFB" BorderBrush="#DEECFB" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="50">
@@ -77,14 +77,8 @@
             StrokeThickness="5" 
             />
             <Border BorderBrush="#DEECFB" BorderThickness="1" CornerRadius="10" Margin="20" Background="#DEECFB">
-                <Button Foreground="#1666BA" FontSize="20" Content="Wyloguj">
-                    <Button.Template>
-                        <ControlTemplate TargetType="Button">
-                            <Border Background="#DEECFB" BorderBrush="#DEECFB" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            </Border>
-                        </ControlTemplate>
-                    </Button.Template>
+                <Button Foreground="#1666BA" FontSize="20" Content="Wyloguj" Click="Button_Click">
+                    
                 </Button>
             </Border>
 

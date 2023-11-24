@@ -37,10 +37,10 @@
 
         <TextBlock Grid.Column="1" Grid.Row="1" FontSize="25" Foreground="#1666BA" Background="#DEECFB" Padding="5" VerticalAlignment="Center" HorizontalAlignment="Center">Zaloguj się</TextBlock>
         <Label  Grid.Row="2" Grid.Column="1" FontSize="20" Margin="5" Background="#DEECFB" Foreground="#1666BA">Nazwa konta</Label>
-        <TextBox Grid.Row="3" Grid.Column="1" FontSize="20" Margin="10" Background="#BEDAF7" Foreground="#1666BA"/>
+        <TextBox Grid.Row="3" Grid.Column="1" FontSize="20" Margin="10" Background="#BEDAF7" Foreground="#1666BA" x:Name="login"/>
         <Label  Grid.Row="4" Grid.Column="1" FontSize="20" Margin="5" Background="#DEECFB" Foreground="#1666BA">Hasło</Label>
-        <TextBox Grid.Row="5" Grid.Column="1" FontSize="20" Margin="10" Background="#BEDAF7" Foreground="#1666BA"/>
-        <TextBlock Grid.Column="1" Grid.Row="6" FontSize="25" Foreground="Red" Background="#DEECFB" Padding="10" VerticalAlignment="Center" HorizontalAlignment="Center">Błędne hasło</TextBlock>
+        <TextBox Grid.Row="5" Grid.Column="1" FontSize="20" Margin="10" Background="#BEDAF7" Foreground="#1666BA" x:Name="haslo"/>
+        <TextBlock Grid.Column="1" Grid.Row="6" FontSize="25" Foreground="Red" Background="#DEECFB" Padding="10" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="komunikat"></TextBlock>
         <Line VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="7" Grid.Column="1"
             X1="0" Y1="0"
             X2="400" Y2="0"
@@ -48,14 +48,8 @@
             StrokeThickness="5" 
             />
         <Border Grid.Row="7" Grid.Column="1" BorderBrush="#DEECFB" Width="200" BorderThickness="5" CornerRadius="15" Margin="10" Background="#368CE7">
-            <Button Foreground="#DEECFB"  FontSize="20" Content="Zaloguj">
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="#368CE7" BorderBrush="#DEECFB" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="15">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
+            <Button Foreground="#DEECFB"  FontSize="20" Content="Zaloguj" Click="Zaloguj">
+                
             </Button>
         </Border>
 
