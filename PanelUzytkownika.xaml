@@ -60,15 +60,22 @@
 
         </StackPanel>
         <TextBox Grid.Row="0" Grid.Column="3" Margin="20" Background="#368CE7" Foreground="#DEECFB" x:Name="txtSearch"/>
-        <TextBox Grid.Row="0" Grid.Column="4" Margin="20" Background="#368CE7" Foreground="#DEECFB" x:Name="txtFilter"/><!--Dodać tu TextChanged="txtFilter_TextChanged"-->
+        <TextBox Grid.Row="0" Grid.Column="4" Margin="20" Background="#368CE7" Foreground="#DEECFB" x:Name="txtFilter" TextChanged="txtFilter_TextChanged"/><!--Dodać tu TextChanged="txtFilter_TextChanged"-->
         <TextBlock Grid.Column="1" Grid.Row="0" Foreground="#1666BA" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center">Magazyn nr 1</TextBlock>
         <ListView Background="#BEDAF7" x:Name="lstProdukty" Grid.Row="1" Grid.Column="1" Margin="20" Grid.ColumnSpan="4" Grid.RowSpan="2">
             <ListView.View>
                 <GridView>
+                    <GridViewColumn Header="Typ produktu" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=TypProduktu}"  Foreground="Blue" FontSize="15" Width="55" TextAlignment="Right" FontWeight="Bold"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                     <GridViewColumn Header="Kod" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Path=Symbol}"  Foreground="Blue" FontSize="15" Width="55" TextAlignment="Right" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding Path=Kod}"  Foreground="Blue" FontSize="15" Width="55" TextAlignment="Right" FontWeight="Bold"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -89,7 +96,7 @@
                     <GridViewColumn Header="Cena" Width="100" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Path=Magazyn}" Foreground="Blue" FontSize="15" Width="55" TextAlignment="Right" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding Path=CenaProduktu}" Foreground="Blue" FontSize="15" Width="55" TextAlignment="Right" FontWeight="Bold"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

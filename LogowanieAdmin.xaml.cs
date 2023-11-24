@@ -24,7 +24,7 @@ namespace Magazyn___projekt
         {
             InitializeComponent();
         }
-
+        
         private void Zaloguj(object sender, RoutedEventArgs e)
         {
             string log = login.Text;
