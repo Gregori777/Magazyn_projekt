@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Magazyn___projekt"
         mc:Ignorable="d"
         Title="UsunPrzedmiot" Height="450" Width="800" Background="#1666BA"
+        x:Name="up"
         >
     <Grid>
         <Grid.RowDefinitions>

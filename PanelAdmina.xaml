@@ -87,8 +87,8 @@
         <TextBox Grid.Row="0" Grid.Column="4" Margin="20" Background="#368CE7" Foreground="#DEECFB" x:Name="txtFilter"/>
         <TextBlock Grid.Column="1" Grid.Row="0" Foreground="#1666BA" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center">Magazyn nr 1</TextBlock>
         <Button Grid.Row="2" Grid.Column="2" Margin="20" Background="#368CE7" Foreground="#DEECFB" Content="Dodaj" Click="Button_Click_1"/>
-        <Button Grid.Row="2" Grid.Column="3" Margin="20" Background="#368CE7" Foreground="#DEECFB" Content="Usuń"/>
-        <Button Grid.Row="2" Grid.Column="4" Margin="20" Background="#368CE7" Foreground="#DEECFB" Content="Modyfikuj"/>
+        <Button Grid.Row="2" Grid.Column="3" Margin="20" Background="#368CE7" Foreground="#DEECFB" Content="Usuń" Click="Button_Click_2"/>
+        <Button Grid.Row="2" Grid.Column="4" Margin="20" Background="#368CE7" Foreground="#DEECFB" Content="Modyfikuj" Click="Button_Click_3"/>
         <ListView Background="#BEDAF7" x:Name="lstProdukty" Grid.Row="1" Grid.Column="1" Margin="20" Grid.ColumnSpan="4">
             <ListView.View>
                 <GridView>
