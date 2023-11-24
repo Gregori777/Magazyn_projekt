@@ -30,5 +30,22 @@ namespace Magazyn___projekt
             mw.Show();
             this.Close();
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (!IsWindowOpen<Window>("dp"))
+            {
+                DodajPrzedmiot dp = new DodajPrzedmiot();
+                dp.Show();
+            }
+            
+            
+        }
+        public static bool IsWindowOpen<T>(string name = "") where T : Window
+        {
+            return string.IsNullOrEmpty(name)
+               ? Application.Current.Windows.OfType<T>().Any()
+               : Application.Current.Windows.OfType<T>().Any(w => w.Name.Equals(name));
+        }
     }
 }
