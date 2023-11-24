@@ -53,7 +53,7 @@
             StrokeThickness="5" 
             />
             <Border BorderBrush="#DEECFB" BorderThickness="1" CornerRadius="10" Margin="20" Background="#DEECFB">
-                <Button Foreground="#1666BA" FontSize="20" Content="Wyloguj">
+                <Button Foreground="#1666BA" FontSize="20" Content="Wyloguj" Click="Button_Click">
                     
                 </Button>
             </Border>
