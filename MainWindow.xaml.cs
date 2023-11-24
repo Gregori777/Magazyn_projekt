@@ -28,7 +28,6 @@ namespace Magazyn___projekt
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             PanelUzytkownika pu = new PanelUzytkownika();
-            pu.Owner = this;
             pu.Show();
             this.Close();
         }
