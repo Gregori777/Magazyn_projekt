@@ -10,27 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Magazyn___projekt
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Logika interakcji dla klasy EdytujPrzedmiot.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class EdytujPrzedmiot : Window
     {
-        public MainWindow()
+        public EdytujPrzedmiot()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            PanelUzytkownika pu = new PanelUzytkownika();
-            pu.Owner = this;
-            pu.Show();
-            this.Close();
         }
     }
 }
