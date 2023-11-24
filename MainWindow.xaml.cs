@@ -31,5 +31,12 @@ namespace Magazyn___projekt
             pu.Show();
             this.Close();
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            LogowanieAdmin la = new LogowanieAdmin();
+            la.Show();
+            this.Close();
+        }
     }
 }

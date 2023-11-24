@@ -19,9 +19,26 @@ namespace Magazyn___projekt
     /// </summary>
     public partial class LogowanieAdmin : Window
     {
+
         public LogowanieAdmin()
         {
             InitializeComponent();
+        }
+
+        private void Zaloguj(object sender, RoutedEventArgs e)
+        {
+            string log = login.Text;
+            string pass = haslo.Text;
+            if (log == "admin" && pass == "password")
+            {
+                PanelAdmina pa = new PanelAdmina();
+                pa.Show();
+                this.Close();
+            }
+            else
+            {
+                komunikat.Text = "Błędne hasło lub login!";
+            }
         }
     }
 }
