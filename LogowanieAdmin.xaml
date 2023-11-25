@@ -68,7 +68,7 @@
             </Button.Template>
         </Button>
 
-        <Button Content="X" Grid.Row="0" Grid.Column="3" FontSize="20" Foreground="#1666BA" Background="#DEECFB" Height="30" Width="30"  BorderThickness="5">
+        <Button Content="X" Grid.Row="0" Grid.Column="3" FontSize="20" Foreground="#1666BA" Background="#DEECFB" Height="30" Width="30"  BorderThickness="5" Click="Button_Click">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="#1666BA" BorderThickness="3" CornerRadius="15">

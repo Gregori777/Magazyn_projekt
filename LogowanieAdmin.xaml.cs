@@ -40,5 +40,12 @@ namespace Magazyn___projekt
                 komunikat.Text = "Błędne hasło lub login!";
             }
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mw = new MainWindow();
+            mw.Show();
+            this.Close();
+        }
     }
 }
