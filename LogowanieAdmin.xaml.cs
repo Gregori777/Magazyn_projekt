@@ -28,7 +28,7 @@ namespace Magazyn___projekt
         private void Zaloguj(object sender, RoutedEventArgs e)
         {
             string log = login.Text;
-            string pass = haslo.Text;
+            string pass = haslo.Password;
             if (log == "admin" && pass == "password")
             {
                 PanelAdmina pa = new PanelAdmina();
