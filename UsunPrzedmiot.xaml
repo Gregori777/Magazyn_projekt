@@ -46,17 +46,23 @@
             Stroke="#7AB3EF"
             StrokeThickness="5" 
             />
-        <Border Grid.Row="4" Grid.Column="1" BorderBrush="#DEECFB" Width="200" BorderThickness="5" CornerRadius="15" Margin="10" Background="#368CE7">
-            <Button Foreground="#DEECFB"  FontSize="20" Content="Usuń">
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="#368CE7" BorderBrush="#DEECFB" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="15">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-        </Border>
+        <Button Content="Usuń przedmiot" Grid.Row="4" Grid.Column="1" FontSize="20" Foreground="#DEECFB" Background="#368CE7" Width="200" BorderThickness="5" Margin="10">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="#DEECFB" BorderThickness="3" CornerRadius="15">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="#AAD6F6"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="#8CC7F2"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
 
     </Grid>
 </Window>

@@ -10,7 +10,7 @@
         >
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.75*"/>
             <RowDefinition Height="1.25*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -18,13 +18,14 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="1.25*"/>
-            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.75*"/>
 
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0.75*"/>
+            <ColumnDefinition Width="0.25*"/>
 
         </Grid.ColumnDefinitions>
 
@@ -40,7 +41,7 @@
         <Label  Grid.Row="2" Grid.Column="1" FontSize="20" Margin="5" Background="#DEECFB" Foreground="#1666BA">Nazwa konta</Label>
         <TextBox Grid.Row="3" Grid.Column="1" FontSize="20" Margin="10" Background="#BEDAF7" Foreground="#1666BA" x:Name="login"/>
         <Label  Grid.Row="4" Grid.Column="1" FontSize="20" Margin="5" Background="#DEECFB" Foreground="#1666BA">Hasło</Label>
-        <TextBox Grid.Row="5" Grid.Column="1" FontSize="20" Margin="10" Background="#BEDAF7" Foreground="#1666BA" x:Name="haslo"/>
+        <PasswordBox Grid.Row="5" Grid.Column="1" FontSize="20" Margin="10" Background="#BEDAF7" Foreground="#1666BA" x:Name="haslo"/>
         <TextBlock Grid.Column="1" Grid.Row="6" FontSize="25" Foreground="Red" Background="#DEECFB" Padding="10" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="komunikat"></TextBlock>
         <Line VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="7" Grid.Column="1"
             X1="0" Y1="0"
@@ -48,11 +49,42 @@
             Stroke="#7AB3EF"
             StrokeThickness="5" 
             />
-        <Border Grid.Row="7" Grid.Column="1" BorderBrush="#DEECFB" Width="200" BorderThickness="5" CornerRadius="15" Margin="10" Background="#368CE7">
-            <Button Foreground="#DEECFB"  FontSize="20" Content="Zaloguj" Click="Zaloguj">
-                
-            </Button>
-        </Border>
 
+        <Button Click="Zaloguj" Content="Zaloguj się" Grid.Row="7" Grid.Column="1" FontSize="20" Foreground="#DEECFB" Background="#368CE7" Width="200" BorderThickness="5" Margin="10">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="#DEECFB" BorderThickness="3" CornerRadius="15">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="#AAD6F6"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="#8CC7F2"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <Button Content="X" Grid.Row="0" Grid.Column="3" FontSize="20" Foreground="#1666BA" Background="#DEECFB" Height="30" Width="30"  BorderThickness="5">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="#1666BA" BorderThickness="3" CornerRadius="15">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="#AAD6F6"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="#8CC7F2"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        
     </Grid>
 </Window>

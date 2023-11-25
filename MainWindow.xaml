@@ -34,8 +34,44 @@
             />
 
         <TextBlock Grid.Column="1" Grid.Row="1" FontSize="25" Foreground="#1666BA" Background="#DEECFB" Padding="10" VerticalAlignment="Center" HorizontalAlignment="Center">Zaloguj się jako</TextBlock>
-        <Button Grid.Row="2" Grid.Column="1" FontSize="25" Margin="10" Background="#368CE7" Foreground="#DEECFB" Content="Administrator" Click="Button_Click_1"/>
-        <Button Grid.Row="3" Grid.Column="1" FontSize="25" Margin="10" Background="#368CE7" Foreground="#DEECFB" Content="Użytkownik" Click="Button_Click"/>
+
+
+        <Button Click="Button_Click_1" Content="Administrator" Grid.Row="2" Grid.Column="1" FontSize="20" Foreground="#DEECFB" Background="#368CE7" Width="400" BorderThickness="5" Margin="10">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="#DEECFB" BorderThickness="3" CornerRadius="15">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="#AAD6F6"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="#8CC7F2"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <Button Click="Button_Click" Content="Użytkownik" Grid.Row="3" Grid.Column="1" FontSize="20" Foreground="#DEECFB" Background="#368CE7" Width="400" BorderThickness="5" Margin="10">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="#DEECFB" BorderThickness="3" CornerRadius="15">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="#AAD6F6"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="#8CC7F2"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
         <Line VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="4" Grid.Column="1"
             X1="0" Y1="0"
             X2="400" Y2="0"
