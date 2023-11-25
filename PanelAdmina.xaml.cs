@@ -33,19 +33,42 @@ namespace Magazyn___projekt
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (!IsWindowOpen<Window>("dp"))
+            if (!Helpers.CzyOknoOtwarte<Window>("dp"))
             {
                 DodajPrzedmiot dp = new DodajPrzedmiot();
                 dp.Show();
             }
-            
-            
+            else
+            {
+                MessageBox.Show("Dodajesz już nowy rekord!");
+            }
+
         }
-        public static bool IsWindowOpen<T>(string name = "") where T : Window
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            return string.IsNullOrEmpty(name)
-               ? Application.Current.Windows.OfType<T>().Any()
-               : Application.Current.Windows.OfType<T>().Any(w => w.Name.Equals(name));
+            if (!Helpers.CzyOknoOtwarte<Window>("up"))
+            {
+                UsunPrzedmiot up = new UsunPrzedmiot();
+                up.Show();
+            }
+            else
+            {
+                MessageBox.Show("Usuwasz już rekord!");
+            }
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            if (!Helpers.CzyOknoOtwarte<Window>("ep"))
+            {
+                EdytujPrzedmiot ep = new EdytujPrzedmiot();
+                ep.Show();
+            }
+            else
+            {
+                MessageBox.Show("Edytujesz już rekord!");
+            }
         }
     }
 }
