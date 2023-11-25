@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Magazyn___projekt"
         mc:Ignorable="d"
         Title="DodawanieMagazynu" Height="450" Width="800" Background="#1666BA"
+        Icon="letter-m.ico"
         >
     <Grid>
         <Grid.RowDefinitions>

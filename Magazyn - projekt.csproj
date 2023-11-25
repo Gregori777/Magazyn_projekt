@@ -9,6 +9,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="letter-m.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="letter-m.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="EPPlus" Version="7.0.2" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.118" />
   </ItemGroup>
