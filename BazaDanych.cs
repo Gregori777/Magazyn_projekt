@@ -1,14 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
 
 namespace Magazyn___projekt
 {
     public class BazaDanych
     {
+        public static ObservableCollection<Produkt> ListaProduktow = null;
+
         public static void WczytajDaneZBazy() // czytanie danych z bazy
         {
             string connectionString = "Data Source=magazyn.db;Version=3;";// okreslamy zrodlo danych
@@ -30,8 +35,8 @@ namespace Magazyn___projekt
                 ListaProduktow.Add(new Produkt(typ, kod, nazwa, ilosc, cena));
             }
         }
-
-
+    
+        
 
     }
 }
