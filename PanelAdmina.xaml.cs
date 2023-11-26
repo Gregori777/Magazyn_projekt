@@ -126,70 +126,7 @@ namespace Magazyn___projekt
             WczytajDaneZBazy();
         }
 
-            using (SQLiteConnection polaczenie = new SQLiteConnection(connectionString))
-            { // tworzymy polaczenie
-                polaczenie.Open();// otwieramy polaczenie z baza
-                string zapytanie = "SELECT * FROM magazyny";// nasze zapytanie
-                using SQLiteCommand komenda = new SQLiteCommand(zapytanie, polaczenie);// tworzymy komende ktora wysyla zapytanie do naszego polaczenia
-                using SQLiteDataReader reader = komenda.ExecuteReader();// mozliwosc czytania danych(jesli dobrze zrozumialem)
-                while (reader.Read())// petla czyta dane z bazy
-                {
-                    string pelnaNazwa;
-                    int id = Convert.ToInt32(reader["idMagazynu"]);
-                    string nazwa = reader["nazwaMagazynu"] as string;
-                    string lokalizacja = reader["lokalizacjaMagazynu"] as string;
-                    // Tworzymy nowy przycisk
-                    Button nowyPrzycisk = new Button();
-
-                    // Ustawiamy właściwości przycisku zgodnie z Twoim szablonem
-                    nowyPrzycisk.FontSize = 20;
-                    nowyPrzycisk.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#1666BA"));
-                    nowyPrzycisk.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#DEECFB"));
-                    nowyPrzycisk.BorderThickness = new Thickness(0);
-                    nowyPrzycisk.Content = "M"+id;
-                    nowyPrzycisk.Width = 75;
-                    nowyPrzycisk.Height = 75;
-                    nowyPrzycisk.Margin = new Thickness(20);
-                    pelnaNazwa = nazwa + " - " + lokalizacja;
-                    // Dodajemy szablon do nowego przycisku
-                    nowyPrzycisk.Template = (ControlTemplate)Resources["MyButtonTemplate"]; // "MyButtonTemplate" to klucz szablonu zasobu XAML
-
-                    // Dodajemy obsługę zdarzenia dla nowego przycisku
-                    nowyPrzycisk.Click += (s, args) => ObslugaZdarzenia(id, pelnaNazwa);
-
-                    // Dodajemy nowy przycisk do istniejącego kontenera (np. Grid)
-                    stackPanel.Children.Add(nowyPrzycisk);
-                }
-                polaczenie.Close();
-            }
-        }
-        private void ObslugaZdarzenia(int id, string pelnanazwa)
-        {
-            nazwaMagazynu.Text = pelnanazwa;
-            string connectionString = $"Data Source=magazyn.db;Version=3;";// okreslamy zrodlo danych
-
-            using (SQLiteConnection polaczenie = new SQLiteConnection(connectionString))
-            { // tworzymy polaczenie
-                polaczenie.Open();// otwieramy polaczenie z baza
-                string zapytanie = $"SELECT typProduktu, kodProduktu, nazwaProduktu, iloscProduktu, cenaProduktu FROM produkty WHERE idMagazynu = {id}";// nasze zapytanie
-
-                using SQLiteCommand komenda = new SQLiteCommand(zapytanie, polaczenie);// tworzymy komende ktora wysyla zapytanie do naszego polaczenia
-                using SQLiteDataReader reader = komenda.ExecuteReader();// mozliwosc czytania danych(jesli dobrze zrozumialem)
-                ListaProduktow.Clear();
-                while (reader.Read())// petla czyta dane z bazy i dodaje je do kolekcji
-                {
-                    string typ = reader["typProduktu"] as string;
-                    string kod = reader["kodProduktu"] as string;
-                    string nazwa = reader["nazwaProduktu"] as string;
-                    int ilosc = Convert.ToInt32(reader["iloscProduktu"]);
-                    double cena = Convert.ToDouble(reader["cenaProduktu"]);
-                    
-                    ListaProduktow.Add(new Produkt(typ, kod, nazwa, ilosc, cena));
-                }
-
-                polaczenie.Close();
-            }
-        }
+            
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mw = new MainWindow();
