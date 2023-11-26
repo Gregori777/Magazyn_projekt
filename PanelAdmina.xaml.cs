@@ -120,6 +120,19 @@ namespace Magazyn___projekt
                 }
                 polaczenie.Close();
             }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            if (!Helpers.CzyOknoOtwarte<Window>("ep"))
+            {
+                DodawanieMagazynu dm = new DodawanieMagazynu();
+                dm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Dodajesz już nowy magazyn!");
+            }
         }
+    }
     }
 
