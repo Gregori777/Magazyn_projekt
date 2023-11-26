@@ -25,21 +25,43 @@ namespace Magazyn___projekt
         {
             InitializeComponent();
             przygotujWiazanie();
+            WczytajDaneZBazy();
         }
 
-        private void przygotujWiazanie()
+        private void przygotujWiazanie() 
         {
             ListaProduktow = new ObservableCollection<Produkt>();
-            ListaProduktow.Add(new Produkt("Procesor", "AM376D", "Ryzen 5 2600", 143, 232.00));
             lstProdukty.ItemsSource = ListaProduktow;
 
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(lstProdukty.ItemsSource);
             view.SortDescriptions.Add(new SortDescription("Magazyn", ListSortDirection.Ascending));
 
-            view.Filter = FiltrUzytkownika;
+            view.Filter = FiltrUzytkownika; // Wywołujemy filtrowanie
         }
 
-        private bool FiltrUzytkownika(object item)
+        private void WczytajDaneZBazy() // czytanie danych z bazy
+        {
+            string connectionString = "Data Source=magazyn.db;Version=3;";// okreslamy zrodlo danych
+
+            using SQLiteConnection polaczenie = new SQLiteConnection(connectionString);// tworzymy polaczenie
+            polaczenie.Open();// otwieramy polaczenie z baza
+            string zapytanie = "SELECT typProduktu, kodProduktu, nazwaProduktu, iloscProduktu, cenaProduktu FROM produkty";// nasze zapytanie
+
+            using SQLiteCommand komenda = new SQLiteCommand(zapytanie, polaczenie);// tworzymy komende ktora wysyla zapytanie do naszego polaczenia
+            using SQLiteDataReader reader = komenda.ExecuteReader();// mozliwosc czytania danych(jesli dobrze zrozumialem)
+            while (reader.Read())// petla czyta dane z bazy i dodaje je do kolekcji
+            {
+                string typ = reader["typProduktu"] as string;
+                string kod = reader["kodProduktu"] as string;
+                string nazwa = reader["nazwaProduktu"] as string;
+                int ilosc = Convert.ToInt32(reader["iloscProduktu"]);
+                double cena = Convert.ToDouble(reader["cenaProduktu"]);
+
+                ListaProduktow.Add(new Produkt(typ, kod, nazwa, ilosc, cena));
+            }
+        }
+
+        private bool FiltrUzytkownika(object item) // Funkcja odpowiedzialna za filtrowanie
         {
             if (String.IsNullOrEmpty(txtFilter.Text))
                 return true;

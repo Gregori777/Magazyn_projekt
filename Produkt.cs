@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Magazyn___projekt
 {
-    class Produkt
+    public class Produkt
     {
         public string TypProduktu { get; set; }
         public string Kod { get; set; }
