@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.IO;
+using System.Data.SQLite;
+using System.Windows.Markup;
 
 namespace Magazyn___projekt
 {
@@ -19,6 +23,7 @@ namespace Magazyn___projekt
     /// </summary>
     public partial class PanelAdmina : Window
     {
+        private string NazwaPLikuDb;
         public PanelAdmina()
         {
             InitializeComponent();
@@ -68,6 +73,37 @@ namespace Magazyn___projekt
             else
             {
                 MessageBox.Show("Edytujesz już rekord!");
+            }
+        }
+
+        private void ImportBazyDanych(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Pliki bazy danych (*.db)|*.db|Wszystkie pliki (*.*)|*.*";
+            if (ofd.ShowDialog() == true)
+            {
+                string sciezkaPLiku = ofd.FileName;
+
+                try
+                {
+                    string sciezkaProjektu = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                    NazwaPLikuDb = System.IO.Path.GetFileNameWithoutExtension(NazwaPLikuDb);
+                    string sciezkaDocelowa = System.IO.Path.Combine(sciezkaProjektu, System.IO.Path.GetFileName(sciezkaPLiku));
+                    if (File.Exists(sciezkaDocelowa))
+                    {
+                        // Usuń stary plik
+                        File.Delete(sciezkaDocelowa);
+                    }
+
+                    File.Copy(sciezkaPLiku, sciezkaDocelowa, true);
+
+                    MessageBox.Show("Baza danych została pomyślnie zaimportowana do folderu projektu.", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show($"Plik bazy danych znajduje się pod ścieżką: {sciezkaDocelowa}", "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Wystąpił błąd podczas importowania bazy danych: {ex.Message}", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
     }
