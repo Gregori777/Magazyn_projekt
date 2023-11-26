@@ -23,19 +23,45 @@ namespace Magazyn___projekt
         public UsunMagazyn()
         {
             InitializeComponent();
+            SprawdzMagazyny();
+        }
+        private void SprawdzMagazyny()
+        {
+            string connectionString = $"Data Source=magazyn.db;Version=3;";// okreslamy zrodlo danych
+            using (SQLiteConnection polaczenie = new SQLiteConnection(connectionString))
+            { // tworzymy polaczenie
+                polaczenie.Open();// otwieramy polaczenie z baza
+                string zapytanie = "SELECT * FROM magazyny";// nasze zapytanie
+                using SQLiteCommand komenda = new SQLiteCommand(zapytanie, polaczenie);// tworzymy komende ktora wysyla zapytanie do naszego polaczenia
+                using SQLiteDataReader reader = komenda.ExecuteReader();// mozliwosc czytania danych(jesli dobrze zrozumialem)
+                while (reader.Read())// petla czyta dane z bazy
+                {
+                    int id = Convert.ToInt32(reader["idMagazynu"]);
+                    // Tworzymy nowy przycisk
+                    ComboBoxItem nowaOpcja = new ComboBoxItem();
+                    nowaOpcja.Content = $"M{id}";
+                    nowaOpcja.Tag = id.ToString();
+                    // Dodajemy opcję do ComboBox
+                    cmbSortowanie.Items.Add(nowaOpcja);
+
+                    // Unikatowy delegat zdarzenia dla opcji w ComboBox
+                    
+                }
+                polaczenie.Close();
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string connectionString = $"Data Source=magazyn.db;Version=3;";// okreslamy zrodlo danych
-
+            ComboBoxItem wybranaOpcja = (ComboBoxItem)cmbSortowanie.SelectedItem;
             using SQLiteConnection polaczenie = new SQLiteConnection(connectionString);// tworzymy polaczenie
             polaczenie.Open();// otwieramy polaczenie z baza
-            string zapytanie = $"DELETE FROM magazyny WHERE idMagazynu = {};";// nasze zapytanie
+            string zapytanie = $"DELETE FROM magazyny WHERE idMagazynu = {wybranaOpcja.Tag};";// nasze zapytanie
             using SQLiteCommand komenda = new SQLiteCommand(zapytanie, polaczenie);// tworzymy komende ktora wysyla zapytanie do naszego polaczenia
             komenda.ExecuteNonQuery();
             this.Close();
-            MessageBox.Show("Pomyślnie dodano magazyn!", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("Pomyślnie usunięto magazyn!", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

@@ -55,7 +55,7 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button FontSize="50" Foreground="#1666BA" Background="#DEECFB" BorderThickness="0" Width="75" Height="75" Margin="20" Content="-">
+                <Button FontSize="50" Foreground="#1666BA" Background="#DEECFB" BorderThickness="0" Width="75" Height="75" Margin="20" Content="-" Click="Button_Click_5">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="#DEECFB" BorderThickness="1" CornerRadius="50">

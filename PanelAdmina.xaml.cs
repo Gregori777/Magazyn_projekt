@@ -124,6 +124,7 @@ namespace Magazyn___projekt
         {
             ListaProduktow.Clear();
             WczytajDaneZBazy();
+            SprawdzMagazyny();//Sprawić aby usuwałyh się stare przyciski!!!
         }
 
             
@@ -301,8 +302,18 @@ namespace Magazyn___projekt
             };
         }
 
-
-
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            if (!Helpers.CzyOknoOtwarte<Window>("dm"))
+            {
+                UsunMagazyn dm = new UsunMagazyn();
+                dm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Usuwasz już magazyn!");
+            }
+        }
     }
     }
 
