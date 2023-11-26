@@ -108,25 +108,8 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        
+
         <Button Click="Button_Click_2" Content="Usuń" Grid.Row="2" Grid.Column="2" FontSize="15" Foreground="#DEECFB" Background="#368CE7" BorderThickness="5" Margin="10">
-            <Button.Template>
-                <ControlTemplate TargetType="Button">
-                    <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="#DEECFB" BorderThickness="3" CornerRadius="15">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="border" Property="Background" Value="#AAD6F6"/>
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="border" Property="Background" Value="#8CC7F2"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Button.Template>
-        </Button>
-        <Button Content="Importuj bazę" Grid.Row="2" Grid.Column="1" FontSize="15" Foreground="#DEECFB" Background="#368CE7" BorderThickness="5" Margin="10" Click="ImportBazyDanych">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="#DEECFB" BorderThickness="3" CornerRadius="15">

@@ -15,18 +15,19 @@ using System.Windows.Shapes;
 using System.IO;
 using System.Data.SQLite;
 using System.Windows.Markup;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace Magazyn___projekt
 {
-    /// <summary>
-    /// Logika interakcji dla klasy PanelAdmina.xaml
-    /// </summary>
     public partial class PanelAdmina : Window
     {
-        private string NazwaPLikuDb;
+        private ObservableCollection<Produkt> ListaProduktow = null;
         public PanelAdmina()
         {
             InitializeComponent();
+            przygotujWiazanie();
+            WczytajDaneZBazy();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -75,36 +76,49 @@ namespace Magazyn___projekt
                 MessageBox.Show("Edytujesz już rekord!");
             }
         }
-
-        private void ImportBazyDanych(object sender, RoutedEventArgs e)
+        private void przygotujWiazanie()
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "Pliki bazy danych (*.db)|*.db|Wszystkie pliki (*.*)|*.*";
-            if (ofd.ShowDialog() == true)
-            {
-                string sciezkaPLiku = ofd.FileName;
+            ListaProduktow = new ObservableCollection<Produkt>();
+            lstProdukty.ItemsSource = ListaProduktow;
 
-                try
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(lstProdukty.ItemsSource);
+            view.SortDescriptions.Add(new SortDescription("Magazyn", ListSortDirection.Ascending));
+
+            view.Filter = FiltrUzytkownika; // Wywołujemy filtrowanie
+        }
+        private bool FiltrUzytkownika(object item) // Funkcja odpowiedzialna za filtrowanie
+        {
+            if (String.IsNullOrEmpty(txtFilter.Text))
+                return true;
+            else
+                return ((item as Produkt).Nazwa.IndexOf(txtFilter.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+        }
+
+        private void txtFilter_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(lstProdukty.ItemsSource).Refresh();
+        }
+        private void WczytajDaneZBazy() // czytanie danych z bazy
+        {
+                string connectionString = $"Data Source=magazyn.db;Version=3;";// okreslamy zrodlo danych
+
+                using SQLiteConnection polaczenie = new SQLiteConnection(connectionString);// tworzymy polaczenie
+                polaczenie.Open();// otwieramy polaczenie z baza
+                string zapytanie = "SELECT typProduktu, kodProduktu, nazwaProduktu, iloscProduktu, cenaProduktu FROM produkty";// nasze zapytanie
+
+                using SQLiteCommand komenda = new SQLiteCommand(zapytanie, polaczenie);// tworzymy komende ktora wysyla zapytanie do naszego polaczenia
+                using SQLiteDataReader reader = komenda.ExecuteReader();// mozliwosc czytania danych(jesli dobrze zrozumialem)
+                while (reader.Read())// petla czyta dane z bazy i dodaje je do kolekcji
                 {
-                    string sciezkaProjektu = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-                    NazwaPLikuDb = System.IO.Path.GetFileNameWithoutExtension(NazwaPLikuDb);
-                    string sciezkaDocelowa = System.IO.Path.Combine(sciezkaProjektu, System.IO.Path.GetFileName(sciezkaPLiku));
-                    if (File.Exists(sciezkaDocelowa))
-                    {
-                        // Usuń stary plik
-                        File.Delete(sciezkaDocelowa);
-                    }
+                    string typ = reader["typProduktu"] as string;
+                    string kod = reader["kodProduktu"] as string;
+                    string nazwa = reader["nazwaProduktu"] as string;
+                    int ilosc = Convert.ToInt32(reader["iloscProduktu"]);
+                    double cena = Convert.ToDouble(reader["cenaProduktu"]);
 
-                    File.Copy(sciezkaPLiku, sciezkaDocelowa, true);
-
-                    MessageBox.Show("Baza danych została pomyślnie zaimportowana do folderu projektu.", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
-                    MessageBox.Show($"Plik bazy danych znajduje się pod ścieżką: {sciezkaDocelowa}", "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Wystąpił błąd podczas importowania bazy danych: {ex.Message}", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                    ListaProduktow.Add(new Produkt(typ, kod, nazwa, ilosc, cena));
                 }
             }
         }
     }
-}
+
