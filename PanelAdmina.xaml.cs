@@ -23,6 +23,7 @@ namespace Magazyn___projekt
     public partial class PanelAdmina : Window
     {
         private ObservableCollection<Produkt> ListaProduktow = null;
+        private ICollectionView collectionView;
         public PanelAdmina()
         {
             InitializeComponent();
@@ -124,6 +125,8 @@ namespace Magazyn___projekt
             ListaProduktow.Clear();
             WczytajDaneZBazy();
         }
+
+            
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mw = new MainWindow();
@@ -175,23 +178,11 @@ namespace Magazyn___projekt
             ListaProduktow = new ObservableCollection<Produkt>();
             lstProdukty.ItemsSource = ListaProduktow;
 
-            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(lstProdukty.ItemsSource);
-            view.SortDescriptions.Add(new SortDescription("Magazyn", ListSortDirection.Ascending));
+            collectionView = CollectionViewSource.GetDefaultView(ListaProduktow);
+            collectionView.SortDescriptions.Add(new SortDescription("TypProduktu", ListSortDirection.Ascending));
 
-            view.Filter = FiltrUzytkownika; // Wywołujemy filtrowanie
         }
-        private bool FiltrUzytkownika(object item) // Funkcja odpowiedzialna za filtrowanie
-        {
-            if (String.IsNullOrEmpty(txtFilter.Text))
-                return true;
-            else
-                return ((item as Produkt).Nazwa.IndexOf(txtFilter.Text, StringComparison.OrdinalIgnoreCase) >= 0);
-        }
-
-        private void txtFilter_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
-            CollectionViewSource.GetDefaultView(lstProdukty.ItemsSource).Refresh();
-        }
+ 
         private void WczytajDaneZBazy() // czytanie danych z bazy
         {
             string connectionString = $"Data Source=magazyn.db;Version=3;";// okreslamy zrodlo danych
@@ -228,19 +219,6 @@ namespace Magazyn___projekt
             else
             {
                 MessageBox.Show("Dodajesz już nowy magazyn!");
-            }
-        }
-
-        private void Button_Click_5(object sender, RoutedEventArgs e)
-        {
-            if (!Helpers.CzyOknoOtwarte<Window>("dm"))
-            {
-                UsuwanieMagazynu um = new UsuwanieMagazynu();
-                um.Show();
-            }
-            else
-            {
-                MessageBox.Show("Usuwasz już nowy magazyn!");
             }
         }
     }

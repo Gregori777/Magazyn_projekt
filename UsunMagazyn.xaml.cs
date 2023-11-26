@@ -15,9 +15,12 @@ using System.Windows.Shapes;
 
 namespace Magazyn___projekt
 {
-    public partial class DodawanieMagazynu : Window
+    /// <summary>
+    /// Logika interakcji dla klasy UsunMagazyn.xaml
+    /// </summary>
+    public partial class UsunMagazyn : Window
     {
-        public DodawanieMagazynu()
+        public UsunMagazyn()
         {
             InitializeComponent();
         }
@@ -28,7 +31,7 @@ namespace Magazyn___projekt
 
             using SQLiteConnection polaczenie = new SQLiteConnection(connectionString);// tworzymy polaczenie
             polaczenie.Open();// otwieramy polaczenie z baza
-            string zapytanie = $"INSERT INTO magazyny(nazwaMagazynu, lokalizacjaMagazynu) VALUES ('{nazwaMagazynu.Text}','{lokalizacjaMagazynu.Text}');";// nasze zapytanie
+            string zapytanie = $"DELETE FROM magazyny WHERE idMagazynu = {};";// nasze zapytanie
             using SQLiteCommand komenda = new SQLiteCommand(zapytanie, polaczenie);// tworzymy komende ktora wysyla zapytanie do naszego polaczenia
             komenda.ExecuteNonQuery();
             this.Close();
