@@ -23,6 +23,7 @@ namespace Magazyn___projekt
     public partial class PanelAdmina : Window
     {
         private ObservableCollection<Produkt> ListaProduktow = null;
+        private ICollectionView collectionView;
         public PanelAdmina()
         {
             InitializeComponent();
@@ -87,23 +88,11 @@ namespace Magazyn___projekt
             ListaProduktow = new ObservableCollection<Produkt>();
             lstProdukty.ItemsSource = ListaProduktow;
 
-            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(lstProdukty.ItemsSource);
-            view.SortDescriptions.Add(new SortDescription("Magazyn", ListSortDirection.Ascending));
+            collectionView = CollectionViewSource.GetDefaultView(ListaProduktow);
+            collectionView.SortDescriptions.Add(new SortDescription("TypProduktu", ListSortDirection.Ascending));
 
-            view.Filter = FiltrUzytkownika; // Wywołujemy filtrowanie
         }
-        private bool FiltrUzytkownika(object item) // Funkcja odpowiedzialna za filtrowanie
-        {
-            if (String.IsNullOrEmpty(txtFilter.Text))
-                return true;
-            else
-                return ((item as Produkt).Nazwa.IndexOf(txtFilter.Text, StringComparison.OrdinalIgnoreCase) >= 0);
-        }
-
-        private void txtFilter_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
-            CollectionViewSource.GetDefaultView(lstProdukty.ItemsSource).Refresh();
-        }
+ 
         private void WczytajDaneZBazy() // czytanie danych z bazy
         {
                 string connectionString = $"Data Source=magazyn.db;Version=3;";// okreslamy zrodlo danych
@@ -139,6 +128,88 @@ namespace Magazyn___projekt
                 MessageBox.Show("Dodajesz już nowy magazyn!");
             }
         }
+
+        private void txtFilter_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            FilterProducts();
+        }
+
+        private void cmbSortowanie_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            FilterProducts();
+        }
+
+        private void FilterProducts()
+        {
+            string filterText = txtFilter.Text.ToLower();
+            string selectedCategory = (cmbSortowanie.SelectedItem as ComboBoxItem)?.Content.ToString();
+
+            ObservableCollection<Produkt> filteredProducts = new ObservableCollection<Produkt>();
+
+            foreach (Produkt product in ListaProduktow)
+            {
+                string propertyValue = null;
+
+                switch (selectedCategory)
+                {
+                    case "Typ produktu":
+                        propertyValue = product.TypProduktu;
+                        break;
+                    case "Kod":
+                        propertyValue = product.Kod;
+                        break;
+                    case "Nazwa":
+                        propertyValue = product.Nazwa;
+                        break;
+                    case "Liczba sztuk":
+                        propertyValue = product.LiczbaSztuk.ToString();
+                        break;
+                    case "Cena":
+                        propertyValue = product.CenaProduktu.ToString();
+                        break;
+                    default:
+                        break;
+                }
+
+                if (!string.IsNullOrEmpty(propertyValue) && propertyValue.ToLower().Contains(filterText))
+                {
+                    filteredProducts.Add(product);
+                }
+            }
+
+            collectionView.Filter = item =>
+            {
+                Produkt product = item as Produkt;
+
+                string propertyValue = null;
+
+                switch (selectedCategory)
+                {
+                    case "Typ produktu":
+                        propertyValue = product.TypProduktu;
+                        break;
+                    case "Kod":
+                        propertyValue = product.Kod;
+                        break;
+                    case "Nazwa":
+                        propertyValue = product.Nazwa;
+                        break;
+                    case "Liczba sztuk":
+                        propertyValue = product.LiczbaSztuk.ToString();
+                        break;
+                    case "Cena":
+                        propertyValue = product.CenaProduktu.ToString();
+                        break;
+                    default:
+                        break;
+                }
+
+                return !string.IsNullOrEmpty(propertyValue) && propertyValue.ToLower().Contains(filterText);
+            };
+        }
+
+
+
     }
     }
 

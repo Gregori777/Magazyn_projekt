@@ -87,8 +87,15 @@
             </Button>
 
         </StackPanel>
-        <TextBox Grid.Row="0" Grid.Column="3" Margin="20" Background="#368CE7" Foreground="#DEECFB" x:Name="txtSearch"/>
-        <TextBox Grid.Row="0" Grid.Column="4" Margin="20" Background="#368CE7" Foreground="#DEECFB" x:Name="txtFilter"/>
+        <ComboBox SelectionChanged="cmbSortowanie_SelectionChanged" Grid.Row="0" Grid.Column="3" x:Name="cmbSortowanie" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
+            <ComboBoxItem>Typ produktu</ComboBoxItem>
+            <ComboBoxItem>Kod</ComboBoxItem>
+            <ComboBoxItem>Nazwa</ComboBoxItem>
+            <ComboBoxItem>Liczba sztuk</ComboBoxItem>
+            <ComboBoxItem>Cena</ComboBoxItem>
+        </ComboBox><!--Do sformatowania-->
+
+        <TextBox Grid.Row="0" Grid.Column="4" Margin="20" Background="#368CE7" Foreground="#DEECFB" x:Name="txtFilter" TextChanged="txtFilter_TextChanged"/>
         <TextBlock Grid.Column="1" Grid.Row="0" Foreground="#1666BA" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center">Magazyn nr 1</TextBlock>
 
         <Button Click="odswiez" Content="Odśwież" Grid.Row="2" Grid.Column="1" FontSize="15" Foreground="#DEECFB" Background="#368CE7" BorderThickness="5" Margin="10">
