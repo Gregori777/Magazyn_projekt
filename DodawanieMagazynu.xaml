@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="DodawanieMagazynu" Height="450" Width="800" Background="#1666BA"
         Icon="letter-m.ico"
+        x:Name="dm"
         >
     <Grid>
         <Grid.RowDefinitions>
@@ -37,16 +38,16 @@
 
         <TextBlock Grid.Column="1" Grid.Row="1" FontSize="25" Foreground="#1666BA" Background="#DEECFB" Padding="5" VerticalAlignment="Center" HorizontalAlignment="Center">Dodawanie magazynu</TextBlock>
         <Label  Grid.Row="2" Grid.Column="1" FontSize="20" Margin="5" Background="#DEECFB" Foreground="#1666BA">Nazwa magazynu</Label>
-        <TextBox Grid.Row="3" Grid.Column="1" FontSize="20" Margin="10" Background="#BEDAF7" Foreground="#1666BA"/>
+        <TextBox Grid.Row="3" Grid.Column="1" FontSize="20" Margin="10" Background="#BEDAF7" Foreground="#1666BA" x:Name="nazwaMagazynu"/>
         <Label  Grid.Row="4" Grid.Column="1" FontSize="20" Margin="5" Background="#DEECFB" Foreground="#1666BA">Lokalizacja magazynu</Label>
-        <TextBox Grid.Row="5" Grid.Column="1" FontSize="20" Margin="10" Background="#BEDAF7" Foreground="#1666BA"/>
+        <TextBox Grid.Row="5" Grid.Column="1" FontSize="20" Margin="10" Background="#BEDAF7" Foreground="#1666BA" x:Name="lokalizacjaMagazynu"/>
         <Line VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="6" Grid.Column="1"
             X1="0" Y1="0"
             X2="400" Y2="0"
             Stroke="#7AB3EF"
             StrokeThickness="5" 
             />
-        <Button Content="Dodaj magazyn" Grid.Row="6" Grid.Column="1" FontSize="20" Foreground="#DEECFB" Background="#368CE7" Width="200" BorderThickness="5" Margin="10">
+        <Button Content="Dodaj magazyn" Grid.Row="6" Grid.Column="1" FontSize="20" Foreground="#DEECFB" Background="#368CE7" Width="200" BorderThickness="5" Margin="10" Click="Button_Click">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="#DEECFB" BorderThickness="3" CornerRadius="15">
