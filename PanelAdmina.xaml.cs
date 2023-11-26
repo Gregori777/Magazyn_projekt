@@ -118,6 +118,7 @@ namespace Magazyn___projekt
 
                     ListaProduktow.Add(new Produkt(typ, kod, nazwa, ilosc, cena));
                 }
+                polaczenie.Close();
             }
         }
     }

@@ -59,6 +59,7 @@ namespace Magazyn___projekt
 
                 ListaProduktow.Add(new Produkt(typ, kod, nazwa, ilosc, cena));
             }
+            polaczenie.Close();
         }
 
         private bool FiltrUzytkownika(object item) // Funkcja odpowiedzialna za filtrowanie
