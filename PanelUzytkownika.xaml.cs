@@ -41,7 +41,7 @@ namespace Magazyn___projekt
 
         private void WczytajDaneZBazy() // czytanie danych z bazy
         {
-            string connectionString = "Data Source=magazyn.db;Version=3;";// okreslamy zrodlo danych
+            string connectionString = $"Data Source=magazyn.db;Version=3;";// okreslamy zrodlo danych
 
             using SQLiteConnection polaczenie = new SQLiteConnection(connectionString);// tworzymy polaczenie
             polaczenie.Open();// otwieramy polaczenie z baza

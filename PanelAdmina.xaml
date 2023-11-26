@@ -22,7 +22,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <ScrollViewer Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" VerticalScrollBarVisibility="Hidden">
+        <ScrollViewer Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" VerticalScrollBarVisibility="Hidden" x:Name="magazyny">
             <StackPanel  Background="#368CE7">
                 <Button FontSize="20" Foreground="#1666BA" Background="#DEECFB" BorderThickness="0" Width="75" Height="75" Margin="20">
                     <Button.Template>
@@ -108,7 +108,7 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        
+
         <Button Click="Button_Click_2" Content="Usuń" Grid.Row="2" Grid.Column="2" FontSize="15" Foreground="#DEECFB" Background="#368CE7" BorderThickness="5" Margin="10">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
