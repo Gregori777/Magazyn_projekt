@@ -20,20 +20,21 @@ namespace Magazyn___projekt
 {
     public partial class PanelUzytkownika : Window
     {
-        
+        public static ObservableCollection<Produkt> ListaProduktow = null;
+
         public PanelUzytkownika()
         {
             InitializeComponent();
             przygotujWiazanie();
-            BazaDanych.WczytajDaneZBazy();
+            WczytajDaneZBazy();
         }
 
         private void przygotujWiazanie() 
         {
-            BazaDanych.ListaProduktow = new ObservableCollection<Produkt>();
-            lstProdukty.ItemsSource = BazaDanych.ListaProduktow;
+            ListaProduktow = new ObservableCollection<Produkt>();
+            lstProdukty.ItemsSource = ListaProduktow;
 
-            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(BazaDanych.ListaProduktow);
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(ListaProduktow);
             view.SortDescriptions.Add(new SortDescription("Cena", ListSortDirection.Ascending));
 
             view.Filter = FiltrUzytkownika; // Wywołujemy filtrowanie
