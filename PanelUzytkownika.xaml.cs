@@ -34,7 +34,7 @@ namespace Magazyn___projekt
             lstProdukty.ItemsSource = ListaProduktow;
 
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(lstProdukty.ItemsSource);
-            view.SortDescriptions.Add(new SortDescription("Magazyn", ListSortDirection.Ascending));
+            view.SortDescriptions.Add(new SortDescription("Cena", ListSortDirection.Ascending));
 
             view.Filter = FiltrUzytkownika; // Wywołujemy filtrowanie
         }
