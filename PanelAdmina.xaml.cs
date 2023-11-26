@@ -221,6 +221,88 @@ namespace Magazyn___projekt
                 MessageBox.Show("Dodajesz już nowy magazyn!");
             }
         }
+
+        private void txtFilter_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            FilterProducts();
+        }
+
+        private void cmbSortowanie_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            FilterProducts();
+        }
+
+        private void FilterProducts()
+        {
+            string filterText = txtFilter.Text.ToLower();
+            string selectedCategory = (cmbSortowanie.SelectedItem as ComboBoxItem)?.Content.ToString();
+
+            ObservableCollection<Produkt> filteredProducts = new ObservableCollection<Produkt>();
+
+            foreach (Produkt product in ListaProduktow)
+            {
+                string propertyValue = null;
+
+                switch (selectedCategory)
+                {
+                    case "Typ produktu":
+                        propertyValue = product.TypProduktu;
+                        break;
+                    case "Kod":
+                        propertyValue = product.Kod;
+                        break;
+                    case "Nazwa":
+                        propertyValue = product.Nazwa;
+                        break;
+                    case "Liczba sztuk":
+                        propertyValue = product.LiczbaSztuk.ToString();
+                        break;
+                    case "Cena":
+                        propertyValue = product.CenaProduktu.ToString();
+                        break;
+                    default:
+                        break;
+                }
+
+                if (!string.IsNullOrEmpty(propertyValue) && propertyValue.ToLower().Contains(filterText))
+                {
+                    filteredProducts.Add(product);
+                }
+            }
+
+            collectionView.Filter = item =>
+            {
+                Produkt product = item as Produkt;
+
+                string propertyValue = null;
+
+                switch (selectedCategory)
+                {
+                    case "Typ produktu":
+                        propertyValue = product.TypProduktu;
+                        break;
+                    case "Kod":
+                        propertyValue = product.Kod;
+                        break;
+                    case "Nazwa":
+                        propertyValue = product.Nazwa;
+                        break;
+                    case "Liczba sztuk":
+                        propertyValue = product.LiczbaSztuk.ToString();
+                        break;
+                    case "Cena":
+                        propertyValue = product.CenaProduktu.ToString();
+                        break;
+                    default:
+                        break;
+                }
+
+                return !string.IsNullOrEmpty(propertyValue) && propertyValue.ToLower().Contains(filterText);
+            };
+        }
+
+
+
     }
     }
 

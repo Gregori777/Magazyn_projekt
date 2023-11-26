@@ -69,7 +69,13 @@
             </Button>
 
         </StackPanel>
-        <TextBox Grid.Row="0" Grid.Column="3" Margin="20" Background="#368CE7" Foreground="#DEECFB" x:Name="txtSearch"/>
+        <ComboBox SelectionChanged="cmbSortowanie_SelectionChanged" Grid.Row="0" Grid.Column="3" x:Name="cmbSortowanie" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
+            <ComboBoxItem>Typ produktu</ComboBoxItem>
+            <ComboBoxItem>Kod</ComboBoxItem>
+            <ComboBoxItem>Nazwa</ComboBoxItem>
+            <ComboBoxItem>Liczba sztuk</ComboBoxItem>
+            <ComboBoxItem>Cena</ComboBoxItem>
+        </ComboBox>
         <TextBox Grid.Row="0" Grid.Column="4" Margin="20" Background="#368CE7" Foreground="#DEECFB" x:Name="txtFilter" TextChanged="txtFilter_TextChanged"/>
         <TextBlock Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Foreground="#1666BA" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="nazwaMagazynu">Magazyn nr 1</TextBlock>
         <ListView Background="#BEDAF7" x:Name="lstProdukty" Grid.Row="1" Grid.Column="1" Margin="20" Grid.ColumnSpan="4" Grid.RowSpan="2">
