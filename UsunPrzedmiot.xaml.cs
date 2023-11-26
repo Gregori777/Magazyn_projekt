@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,5 +24,28 @@ namespace Magazyn___projekt
         {
             InitializeComponent();
         }
+
+        private void usuwanieRekordu(object sender, RoutedEventArgs e)
+        {
+            string connectionString = "Data Source=magazyn.db;Version=3;";
+
+            using SQLiteConnection polaczenie = new SQLiteConnection(connectionString);
+            polaczenie.Open();
+
+            string zapytanie = "DELETE FROM produkty WHERE kodProduktu = @doUsuniecia";
+
+            using (SQLiteCommand komenda = new SQLiteCommand(zapytanie, polaczenie))
+            {
+                komenda.Parameters.AddWithValue("@doUsuniecia", txtKodUsun.Text);
+
+                komenda.ExecuteNonQuery();
+            }
+            polaczenie.Close();
+
+            MessageBox.Show("Usunięto rekord!");
+            this.Close();
+        }
+
+     
     }
 }

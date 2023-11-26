@@ -30,6 +30,12 @@ namespace Magazyn___projekt
             WczytajDaneZBazy();
         }
 
+        private void odswiez(object sender, RoutedEventArgs e)
+        {
+            ListaProduktow.Clear();
+            WczytajDaneZBazy();
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mw = new MainWindow();

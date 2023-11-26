@@ -37,8 +37,8 @@
             />
 
         <TextBlock Grid.Column="1" Grid.Row="1" FontSize="25" Foreground="#1666BA" Background="#DEECFB" Padding="5" VerticalAlignment="Center" HorizontalAlignment="Center">Usuwanie przedmiotu</TextBlock>
-        <Label  Grid.Row="2" Grid.Column="1" FontSize="20" Margin="5" Background="#DEECFB" Foreground="#1666BA">Id przedmiotu</Label>
-        <TextBox Grid.Row="3" Grid.Column="1" FontSize="20" Margin="10" Background="#BEDAF7" Foreground="#1666BA"/>
+        <Label  Grid.Row="2" Grid.Column="1" FontSize="20" Margin="5" Background="#DEECFB" Foreground="#1666BA">Kod przedmiotu</Label>
+        <TextBox Grid.Row="3" Grid.Column="1" FontSize="20" Margin="10" Background="#BEDAF7" Foreground="#1666BA" x:Name="txtKodUsun"/>
 
         <Line VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="4" Grid.Column="1"
             X1="0" Y1="0"
@@ -46,7 +46,7 @@
             Stroke="#7AB3EF"
             StrokeThickness="5" 
             />
-        <Button Content="Usuń przedmiot" Grid.Row="4" Grid.Column="1" FontSize="20" Foreground="#DEECFB" Background="#368CE7" Width="200" BorderThickness="5" Margin="10">
+        <Button Content="Usuń przedmiot" Grid.Row="4" Grid.Column="1" FontSize="20" Foreground="#DEECFB" Background="#368CE7" Width="200" BorderThickness="5" Margin="10" Click="usuwanieRekordu">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="#DEECFB" BorderThickness="3" CornerRadius="15">
