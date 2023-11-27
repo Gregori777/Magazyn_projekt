@@ -62,6 +62,16 @@ namespace Magazyn___projekt
                 string zapytanie = "SELECT * FROM magazyny";// nasze zapytanie
                 using SQLiteCommand komenda = new SQLiteCommand(zapytanie, polaczenie);// tworzymy komende ktora wysyla zapytanie do naszego polaczenia
                 using SQLiteDataReader reader = komenda.ExecuteReader();// mozliwosc czytania danych(jesli dobrze zrozumialem)
+                for (int i = stackPanel.Children.Count - 1; i >= 0; i--)
+                {
+                    if (stackPanel.Children[i] is Button button)
+                    {
+                        if (button.Name != "usun" && button.Name != "dodaj")
+                        {
+                            stackPanel.Children.RemoveAt(i);
+                        }
+                    }
+                }
                 while (reader.Read())// petla czyta dane z bazy
                 {
                     string pelnaNazwa;
@@ -125,7 +135,7 @@ namespace Magazyn___projekt
         {
             ListaProduktow.Clear();
             WczytajDaneZBazy();
-            SprawdzMagazyny();//Sprawić aby usuwałyh się stare przyciski!!!
+            SprawdzMagazyny();//Sprawić aby usuwały się stare przyciski!!!
         }
 
             

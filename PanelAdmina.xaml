@@ -38,7 +38,7 @@
         </Grid.ColumnDefinitions>
         <ScrollViewer Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" VerticalScrollBarVisibility="Hidden">
             <StackPanel  Background="#368CE7" x:Name="stackPanel">
-                <Button FontSize="50" Foreground="#1666BA" Background="#DEECFB" BorderThickness="0" Width="75" Height="75" Margin="20" Content="+" Click="Button_Click_4">
+                <Button FontSize="50" Foreground="#1666BA" Background="#DEECFB" BorderThickness="0" Width="75" Height="75" Margin="20" Content="+" Click="Button_Click_4" x:Name="dodaj">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="#DEECFB" BorderThickness="1" CornerRadius="50">
@@ -55,7 +55,7 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button FontSize="50" Foreground="#1666BA" Background="#DEECFB" BorderThickness="0" Width="75" Height="75" Margin="20" Content="-" Click="Button_Click_5">
+                <Button FontSize="50" Foreground="#1666BA" Background="#DEECFB" BorderThickness="0" Width="75" Height="75" Margin="20" Content="-" Click="Button_Click_5" x:Name="usun">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="#DEECFB" BorderThickness="1" CornerRadius="50">
