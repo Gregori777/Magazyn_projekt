@@ -95,27 +95,27 @@ namespace Magazyn___projekt
         }
         private void ObslugaZdarzenia(int id, string pelnanazwa)
         {
-            Helpers.id_mag = id;
             nazwaMagazynu.Text = pelnanazwa;
             string connectionString = $"Data Source=magazyn.db;Version=3;";// okreslamy zrodlo danych
 
             using (SQLiteConnection polaczenie = new SQLiteConnection(connectionString))
             { // tworzymy polaczenie
                 polaczenie.Open();// otwieramy polaczenie z baza
-                string zapytanie = $"SELECT typProduktu, kodProduktu, nazwaProduktu, iloscProduktu, cenaProduktu FROM produkty WHERE idMagazynu = {id}";// nasze zapytanie
+                string zapytanie = $"SELECT idProduktu, typProduktu, kodProduktu, nazwaProduktu, iloscProduktu, cenaProduktu FROM produkty WHERE idMagazynu = {id}";// nasze zapytanie
 
                 using SQLiteCommand komenda = new SQLiteCommand(zapytanie, polaczenie);// tworzymy komende ktora wysyla zapytanie do naszego polaczenia
                 using SQLiteDataReader reader = komenda.ExecuteReader();// mozliwosc czytania danych(jesli dobrze zrozumialem)
                 ListaProduktow.Clear();
                 while (reader.Read())// petla czyta dane z bazy i dodaje je do kolekcji
                 {
+                    int idProduktu = Convert.ToInt32(reader["idProduktu"]);
                     string typ = reader["typProduktu"] as string;
                     string kod = reader["kodProduktu"] as string;
                     string nazwa = reader["nazwaProduktu"] as string;
                     int ilosc = Convert.ToInt32(reader["iloscProduktu"]);
                     double cena = Convert.ToDouble(reader["cenaProduktu"]);
 
-                    ListaProduktow.Add(new Produkt(typ, kod, nazwa, ilosc, cena));
+                    ListaProduktow.Add(new Produkt(idProduktu, typ, kod, nazwa, ilosc, cena));
                 }
 
                 polaczenie.Close();
@@ -192,19 +192,20 @@ namespace Magazyn___projekt
             using (SQLiteConnection polaczenie = new SQLiteConnection(connectionString))
             { // tworzymy polaczenie
                 polaczenie.Open();// otwieramy polaczenie z baza
-                string zapytanie = "SELECT typProduktu, kodProduktu, nazwaProduktu, iloscProduktu, cenaProduktu FROM produkty WHERE idMagazynu = 1";// nasze zapytanie
+                string zapytanie = "SELECT idProduktu, typProduktu, kodProduktu, nazwaProduktu, iloscProduktu, cenaProduktu FROM produkty WHERE idMagazynu = 1";// nasze zapytanie
 
                 using SQLiteCommand komenda = new SQLiteCommand(zapytanie, polaczenie);// tworzymy komende ktora wysyla zapytanie do naszego polaczenia
                 using SQLiteDataReader reader = komenda.ExecuteReader();// mozliwosc czytania danych(jesli dobrze zrozumialem)
                 while (reader.Read())// petla czyta dane z bazy i dodaje je do kolekcji
                 {
+                    int idProduktu = Convert.ToInt32(reader["idProduktu"]);
                     string typ = reader["typProduktu"] as string;
                     string kod = reader["kodProduktu"] as string;
                     string nazwa = reader["nazwaProduktu"] as string;
                     int ilosc = Convert.ToInt32(reader["iloscProduktu"]);
                     double cena = Convert.ToDouble(reader["cenaProduktu"]);
 
-                    ListaProduktow.Add(new Produkt(typ, kod, nazwa, ilosc, cena));
+                    ListaProduktow.Add(new Produkt(idProduktu, typ, kod, nazwa, ilosc, cena));
                 }
 
                 polaczenie.Close();
@@ -247,6 +248,9 @@ namespace Magazyn___projekt
 
                 switch (selectedCategory)
                 {
+                    case "ID produktu":
+                        propertyValue = product.IDProduktu.ToString();
+                        break;
                     case "Typ produktu":
                         propertyValue = product.TypProduktu;
                         break;
@@ -280,6 +284,9 @@ namespace Magazyn___projekt
 
                 switch (selectedCategory)
                 {
+                    case "ID produktu":
+                        propertyValue = product.IDProduktu.ToString();
+                        break;
                     case "Typ produktu":
                         propertyValue = product.TypProduktu;
                         break;

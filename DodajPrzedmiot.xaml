@@ -42,8 +42,10 @@
             />
 
         <TextBlock Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="1" FontSize="25" Foreground="#1666BA" Background="#DEECFB" Padding="5" VerticalAlignment="Center" HorizontalAlignment="Center">Dodawanie przedmiotu</TextBlock>
-        <Label  Grid.Row="2" Grid.Column="1" FontSize="15"  Background="#DEECFB" Foreground="#1666BA">Typ produktu</Label>
-        <TextBox x:Name="txtTyp" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" FontSize="15" Margin="10" Background="#BEDAF7" Foreground="#1666BA"/>
+        <Label  Grid.Row="2" Grid.Column="1" FontSize="15"  Background="#DEECFB" Foreground="#1666BA">Numer magazynu</Label>
+        <TextBox x:Name="txtID" Grid.Row="3" Grid.Column="1" FontSize="15" Margin="10" Background="#BEDAF7" Foreground="#1666BA"/>
+        <Label  Grid.Row="2" Grid.Column="2" FontSize="15"  Background="#DEECFB" Foreground="#1666BA">Typ produktu</Label>
+        <TextBox x:Name="txtTyp" Grid.Row="3" Grid.Column="2" FontSize="15" Margin="10" Background="#BEDAF7" Foreground="#1666BA"/>
         <Label  Grid.Row="4" Grid.Column="2" FontSize="15"  Background="#DEECFB" Foreground="#1666BA">Kod produktu</Label>
         <TextBox x:Name="txtKod" Grid.Row="5" Grid.Column="2" FontSize="15" Margin="10" Background="#BEDAF7" Foreground="#1666BA"/>
         <Label  Grid.Row="4" Grid.Column="1" FontSize="15"  Background="#DEECFB" Foreground="#1666BA">Nazwa przedmiotu</Label>

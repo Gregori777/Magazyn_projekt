@@ -70,6 +70,7 @@
 
         </StackPanel>
         <ComboBox SelectionChanged="cmbSortowanie_SelectionChanged" Grid.Row="0" Grid.Column="3" x:Name="cmbSortowanie" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
+            <ComboBoxItem>ID produktu</ComboBoxItem>
             <ComboBoxItem>Typ produktu</ComboBoxItem>
             <ComboBoxItem>Kod</ComboBoxItem>
             <ComboBoxItem>Nazwa</ComboBoxItem>
@@ -81,6 +82,13 @@
         <ListView Background="#BEDAF7" x:Name="lstProdukty" Grid.Row="1" Grid.Column="1" Margin="20" Grid.ColumnSpan="4" Grid.RowSpan="2">
             <ListView.View>
                 <GridView>
+                    <GridViewColumn Header="ID produktu" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=IDProduktu}"  Foreground="Blue" FontSize="15" Width="55" TextAlignment="Right" FontWeight="Bold"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                     <GridViewColumn Header="Typ produktu" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>

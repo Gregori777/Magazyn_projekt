@@ -32,7 +32,7 @@ namespace Magazyn___projekt
             using SQLiteConnection polaczenie = new SQLiteConnection(connectionString);
             polaczenie.Open();
 
-            string zapytanie = "DELETE FROM produkty WHERE kodProduktu = @doUsuniecia";
+            string zapytanie = "DELETE FROM produkty WHERE idProduktu = @doUsuniecia";
 
             using (SQLiteCommand komenda = new SQLiteCommand(zapytanie, polaczenie))
             {

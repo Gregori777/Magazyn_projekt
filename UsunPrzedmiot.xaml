@@ -37,7 +37,7 @@
             />
 
         <TextBlock Grid.Column="1" Grid.Row="1" FontSize="25" Foreground="#1666BA" Background="#DEECFB" Padding="5" VerticalAlignment="Center" HorizontalAlignment="Center">Usuwanie przedmiotu</TextBlock>
-        <Label  Grid.Row="2" Grid.Column="1" FontSize="20" Margin="5" Background="#DEECFB" Foreground="#1666BA">Kod przedmiotu</Label>
+        <Label  Grid.Row="2" Grid.Column="1" FontSize="20" Margin="5" Background="#DEECFB" Foreground="#1666BA">ID przedmiotu</Label>
         <TextBox Grid.Row="3" Grid.Column="1" FontSize="20" Margin="10" Background="#BEDAF7" Foreground="#1666BA" x:Name="txtKodUsun"/>
 
         <Line VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="4" Grid.Column="1"

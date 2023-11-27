@@ -34,10 +34,11 @@ namespace Magazyn___projekt
                 polaczenie.Open();
 
                 
-                string zapytanie = $"INSERT INTO produkty (idMagazynu, typProduktu, kodProduktu, nazwaProduktu, iloscProduktu, cenaProduktu) VALUES ({Helpers.id_mag}, @Typ, @Kod, @Nazwa, @Ilosc, @Cena)";
+                string zapytanie = $"INSERT INTO produkty (idMagazynu, typProduktu, kodProduktu, nazwaProduktu, iloscProduktu, cenaProduktu) VALUES (@ID, @Typ, @Kod, @Nazwa, @Ilosc, @Cena)";
 
                 using SQLiteCommand komenda = new SQLiteCommand(zapytanie, polaczenie);
 
+                komenda.Parameters.AddWithValue("@ID", txtID.Text);
                 komenda.Parameters.AddWithValue("@Typ", txtTyp.Text);
                 komenda.Parameters.AddWithValue("@Kod", txtKod.Text);
                 komenda.Parameters.AddWithValue("@Nazwa", txtNazwa.Text);
