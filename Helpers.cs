@@ -9,6 +9,7 @@ namespace Magazyn___projekt
 {
     internal class Helpers
     {
+        public static int id_mag;
         public static bool CzyOknoOtwarte<T>(string nazwa = "") where T : Window
         {
             return string.IsNullOrEmpty(nazwa)
