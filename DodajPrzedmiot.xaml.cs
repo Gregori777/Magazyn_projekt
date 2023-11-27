@@ -25,7 +25,7 @@ namespace Magazyn___projekt
             InitializeComponent();
         }
 
-        private void DodaRekord()
+        private void DodajRekord(object sender, RoutedEventArgs e)
         {
             string connectionString = "Data Source=magazyn.db;Version=3;";
 
@@ -33,21 +33,27 @@ namespace Magazyn___projekt
             {
                 polaczenie.Open();
 
-                // Assuming your table has columns: typProduktu, kodProduktu, nazwaProduktu, iloscProduktu, cenaProduktu
-                string zapytanie = "INSERT INTO produkty (typProduktu, kodProduktu, nazwaProduktu, iloscProduktu, cenaProduktu) VALUES (@Typ, @Kod, @Nazwa, @Ilosc, @Cena)";
+                
+                string zapytanie = $"INSERT INTO produkty (idMagazynu, typProduktu, kodProduktu, nazwaProduktu, iloscProduktu, cenaProduktu) VALUES ({Helpers.id_mag}, @Typ, @Kod, @Nazwa, @Ilosc, @Cena)";
 
-                using (SQLiteCommand komenda = new SQLiteCommand(zapytanie, polaczenie))
-                {
-                    // Assuming you have variables with the values you want to insert
-                    komenda.Parameters.AddWithValue("@Typ", "NowyTyp");
-                    komenda.Parameters.AddWithValue("@Kod", "NowyKod");
-                    komenda.Parameters.AddWithValue("@Nazwa", "NowaNazwa");
-                    komenda.Parameters.AddWithValue("@Ilosc", 10);
-                    komenda.Parameters.AddWithValue("@Cena", 99.99);
+                using SQLiteCommand komenda = new SQLiteCommand(zapytanie, polaczenie);
 
-                    komenda.ExecuteNonQuery();
-                }
+                komenda.Parameters.AddWithValue("@Typ", txtTyp.Text);
+                komenda.Parameters.AddWithValue("@Kod", txtKod.Text);
+                komenda.Parameters.AddWithValue("@Nazwa", txtNazwa.Text);
+                komenda.Parameters.AddWithValue("@Ilosc", txtIlosc.Text);
+                komenda.Parameters.AddWithValue("@Cena", txtCena.Text);
+
+                komenda.ExecuteNonQuery();
+                polaczenie.Close();
+                MessageBox.Show("Dodano rekord!");
+                this.Close();
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

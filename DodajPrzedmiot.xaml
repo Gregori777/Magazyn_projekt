@@ -43,22 +43,22 @@
 
         <TextBlock Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="1" FontSize="25" Foreground="#1666BA" Background="#DEECFB" Padding="5" VerticalAlignment="Center" HorizontalAlignment="Center">Dodawanie przedmiotu</TextBlock>
         <Label  Grid.Row="2" Grid.Column="1" FontSize="15"  Background="#DEECFB" Foreground="#1666BA">Typ produktu</Label>
-        <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" FontSize="15" Margin="10" Background="#BEDAF7" Foreground="#1666BA"/>
+        <TextBox x:Name="txtTyp" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" FontSize="15" Margin="10" Background="#BEDAF7" Foreground="#1666BA"/>
         <Label  Grid.Row="4" Grid.Column="2" FontSize="15"  Background="#DEECFB" Foreground="#1666BA">Kod produktu</Label>
-        <TextBox Grid.Row="5" Grid.Column="2" FontSize="15" Margin="10" Background="#BEDAF7" Foreground="#1666BA"/>
+        <TextBox x:Name="txtKod" Grid.Row="5" Grid.Column="2" FontSize="15" Margin="10" Background="#BEDAF7" Foreground="#1666BA"/>
         <Label  Grid.Row="4" Grid.Column="1" FontSize="15"  Background="#DEECFB" Foreground="#1666BA">Nazwa przedmiotu</Label>
-        <TextBox Grid.Row="5" Grid.Column="1" FontSize="15" Margin="10" Background="#BEDAF7" Foreground="#1666BA"/>
+        <TextBox x:Name="txtNazwa" Grid.Row="5" Grid.Column="1" FontSize="15" Margin="10" Background="#BEDAF7" Foreground="#1666BA"/>
         <Label  Grid.Row="6" Grid.Column="2" FontSize="15"  Background="#DEECFB" Foreground="#1666BA">Ilość przedmiotu</Label>
-        <TextBox Grid.Row="7" Grid.Column="2" FontSize="15" Margin="10" Background="#BEDAF7" Foreground="#1666BA"/>
+        <TextBox x:Name="txtIlosc" Grid.Row="7" Grid.Column="2" FontSize="15" Margin="10" Background="#BEDAF7" Foreground="#1666BA"/>
         <Label  Grid.Row="6" Grid.Column="1" FontSize="15" Margin="1" Background="#DEECFB" Foreground="#1666BA">Cena przedmiotu</Label>
-        <TextBox Grid.Row="7" Grid.Column="1" FontSize="15" Margin="10" Background="#BEDAF7" Foreground="#1666BA"/>
+        <TextBox x:Name="txtCena" Grid.Row="7" Grid.Column="1" FontSize="15" Margin="10" Background="#BEDAF7" Foreground="#1666BA"/>
         <Line VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="2" Grid.Row="8" Grid.Column="1"
             X1="0" Y1="0"
             X2="500" Y2="0"
             Stroke="#7AB3EF"
             StrokeThickness="5" 
             />
-        <Button Content="Dodaj przedmiot" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" FontSize="20" Foreground="#DEECFB" Background="#368CE7" Width="200" BorderThickness="5" Margin="10">
+        <Button Click ="DodajRekord" Content="Dodaj przedmiot" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" FontSize="20" Foreground="#DEECFB" Background="#368CE7" Width="200" BorderThickness="5" Margin="10">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="#DEECFB" BorderThickness="3" CornerRadius="15">

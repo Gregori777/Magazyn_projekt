@@ -95,6 +95,7 @@ namespace Magazyn___projekt
         }
         private void ObslugaZdarzenia(int id, string pelnanazwa)
         {
+            Helpers.id_mag = id;
             nazwaMagazynu.Text = pelnanazwa;
             string connectionString = $"Data Source=magazyn.db;Version=3;";// okreslamy zrodlo danych
 
