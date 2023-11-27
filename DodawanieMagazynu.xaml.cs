@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace Magazyn___projekt
 {
-    /// <summary>
-    /// Logika interakcji dla klasy DodawanieMagazynu.xaml
-    /// </summary>
     public partial class DodawanieMagazynu : Window
     {
         public DodawanieMagazynu()
