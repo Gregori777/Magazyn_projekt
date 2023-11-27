@@ -124,7 +124,7 @@ namespace Magazyn___projekt
         {
             ListaProduktow.Clear();
             WczytajDaneZBazy();
-            SprawdzMagazyny();//Sprawić aby usuwałyh się stare przyciski!!!
+            SprawdzMagazyny();//Sprawić aby usuwały się stare przyciski!!!
         }
 
             
