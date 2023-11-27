@@ -22,6 +22,8 @@ namespace Magazyn___projekt
     {
         public static ObservableCollection<Produkt> ListaProduktow = null;
         private ICollectionView collectionView;
+        private GridViewColumnHeader ostatniaKolumna = null;
+        private ListSortDirection ostatniKierunek = ListSortDirection.Ascending;
 
         public PanelUzytkownika()
         {
@@ -31,6 +33,62 @@ namespace Magazyn___projekt
             przygotujWiazanie();
             WczytajDaneZBazy();
         }
+
+        private void Header_Click(object sender, RoutedEventArgs e)
+        {
+            GridViewColumnHeader kolumna = (GridViewColumnHeader)sender;
+
+            // Czyścimy sortowanie
+            lstProdukty.Items.SortDescriptions.Clear();
+
+            // Określenie pola do sortowania na podstawie treści nagłówka kolumny
+            string sprawdz = kolumna.Content.ToString();
+            string sortowanie = "";
+            switch (sprawdz)
+            {
+                case "ID produktu":
+                    sortowanie = "IDProduktu";
+                    break;
+                case "Typ produktu":
+                    sortowanie = "TypProduktu";
+                    break;
+                case "Kod":
+                    sortowanie = "Kod";
+                    break;
+                case "Nazwa":
+                    sortowanie = "Nazwa";
+                    break;
+                case "Liczba sztuk":
+                    sortowanie = "LiczbaSztuk";
+                    break;
+                case "Cena":
+                    sortowanie = "CenaProduktu";
+                    break;
+                default:
+                    break;
+            }
+
+            ListSortDirection kierunekSortowania;
+
+            // Sprawdzenie, czy kolumna jest już posortowana
+            if (ostatniaKolumna == kolumna && ostatniKierunek == ListSortDirection.Ascending)
+            {
+                kierunekSortowania = ListSortDirection.Descending;
+            }
+            else
+            {
+                kierunekSortowania = ListSortDirection.Ascending;
+            }
+
+            // Zastosowanie sortowania
+            lstProdukty.Items.SortDescriptions.Add(new SortDescription(sortowanie, kierunekSortowania));
+
+            // Przechowanie bieżącego nagłówka i kierunku sortowania dla następnego kliknięcia
+            ostatniaKolumna = kolumna;
+            ostatniKierunek = kierunekSortowania;
+        }
+
+
         private void SprawdzNazweMagazynu()
         {
             string connectionString = $"Data Source=magazyn.db;Version=3;";// okreslamy zrodlo danych
@@ -125,9 +183,9 @@ namespace Magazyn___projekt
         {
             ListaProduktow = new ObservableCollection<Produkt>();
             lstProdukty.ItemsSource = ListaProduktow;
-
             collectionView = CollectionViewSource.GetDefaultView(ListaProduktow);
-            collectionView.SortDescriptions.Add(new SortDescription("TypProduktu", ListSortDirection.Ascending));
+
+            
 
         }
 

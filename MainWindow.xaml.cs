@@ -34,14 +34,12 @@ namespace Magazyn___projekt
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            //LogowanieAdmin la = new LogowanieAdmin();
-            //la.Show();
-            //this.Close();
-
-            //Usunąć to w finalnej wersji!!!
-            PanelAdmina la = new PanelAdmina();
+            LogowanieAdmin la = new LogowanieAdmin();
             la.Show();
             this.Close();
+
+            
+            
         }
     }
 }

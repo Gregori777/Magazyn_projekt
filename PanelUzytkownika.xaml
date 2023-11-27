@@ -69,7 +69,7 @@
             </Button>
 
         </StackPanel>
-        <ComboBox SelectionChanged="cmbSortowanie_SelectionChanged" Grid.Row="0" Grid.Column="3" x:Name="cmbSortowanie" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
+        <ComboBox Text="ID produktu" IsEditable="True" IsReadOnly="True" SelectionChanged="cmbSortowanie_SelectionChanged" Grid.Row="0" Grid.Column="3" x:Name="cmbSortowanie" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
             <ComboBoxItem>ID produktu</ComboBoxItem>
             <ComboBoxItem>Typ produktu</ComboBoxItem>
             <ComboBoxItem>Kod</ComboBoxItem>
@@ -83,6 +83,11 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID produktu" Width="100">
+                        <GridViewColumn.HeaderContainerStyle>
+                            <Style TargetType="{x:Type GridViewColumnHeader}">
+                                <EventSetter Event="Click" Handler="Header_Click" />
+                            </Style>
+                        </GridViewColumn.HeaderContainerStyle>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Path=IDProduktu}"  Foreground="Blue" FontSize="15" Width="55" TextAlignment="Right" FontWeight="Bold"/>
@@ -90,6 +95,11 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Typ produktu" Width="100">
+                        <GridViewColumn.HeaderContainerStyle>
+                            <Style TargetType="{x:Type GridViewColumnHeader}">
+                                <EventSetter Event="Click" Handler="Header_Click" />
+                            </Style>
+                        </GridViewColumn.HeaderContainerStyle>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Path=TypProduktu}"  Foreground="Blue" FontSize="15" Width="55" TextAlignment="Right" FontWeight="Bold"/>
@@ -97,6 +107,11 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Kod" Width="100">
+                        <GridViewColumn.HeaderContainerStyle>
+                            <Style TargetType="{x:Type GridViewColumnHeader}">
+                                <EventSetter Event="Click" Handler="Header_Click" />
+                            </Style>
+                        </GridViewColumn.HeaderContainerStyle>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Path=Kod}"  Foreground="Blue" FontSize="15" Width="55" TextAlignment="Right" FontWeight="Bold"/>
@@ -104,6 +119,11 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Nazwa"  Width="150" >
+                        <GridViewColumn.HeaderContainerStyle>
+                            <Style TargetType="{x:Type GridViewColumnHeader}">
+                                <EventSetter Event="Click" Handler="Header_Click" />
+                            </Style>
+                        </GridViewColumn.HeaderContainerStyle>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Path=Nazwa}" Foreground="Blue" FontSize="15" Width="120" TextAlignment="Right" FontWeight="Bold"/>
@@ -111,6 +131,11 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Liczba sztuk" Width="100">
+                        <GridViewColumn.HeaderContainerStyle>
+                            <Style TargetType="{x:Type GridViewColumnHeader}">
+                                <EventSetter Event="Click" Handler="Header_Click" />
+                            </Style>
+                        </GridViewColumn.HeaderContainerStyle>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Path=LiczbaSztuk}" Foreground="Red" FontSize="25" Width="55" TextAlignment="Right" FontWeight="Bold"/>
@@ -118,6 +143,11 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Cena" Width="100" >
+                        <GridViewColumn.HeaderContainerStyle>
+                            <Style TargetType="{x:Type GridViewColumnHeader}">
+                                <EventSetter Event="Click" Handler="Header_Click" />
+                            </Style>
+                        </GridViewColumn.HeaderContainerStyle>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Path=CenaProduktu}" Foreground="Blue" FontSize="15" Width="55" TextAlignment="Right" FontWeight="Bold"/>
